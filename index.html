@@ -6,42 +6,76 @@
     <title>Terminal Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-<div class="scanlines"></div>
-<div class="container">
-    <main class="left-pane">
-        <header class="header-section">
-            <pre class="ascii-name">
-  /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ 
- /$$__  $$|____ /$$/|____  $$| $$__  $$ /$$__  $$ /$$__  $$|____  $$
+<body>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        
+        <main class="left-pane">
+            <header class="header-section">
+                <pre class="ascii-name">
+ /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$
+/$$__  $$|____ /$$/|____  $$| $$__  $$ /$$__  $$ /$$__  $$|____  $$
 | $$  \ $$   /$$$$/  /$$$$$$$| $$  \ $$| $$  \ $$| $$  \__/ /$$$$$$$
 | $$  | $$  /$$__/  /$$__  $$| $$  | $$| $$  | $$| $$      /$$__  $$
 | $$$$$$$/ /$$$$$$$$|  $$$$$$$| $$  | $$|  $$$$$$$| $$     |  $$$$$$$
 | $$____/ |________/ \_______/|__/  |__/ \____  $$|__/      \_______/
-| $$                                     /$$  \ $$                   
-| $$                                    |  $$$$$$/                   
-|__/                                     \______/                    
-            </pre>
-        </header>
+| $$                                     /$$  \ $$
+| $$                                    |  $$$$$$/
+|__/                                     \______/
+                </pre>
+            </header>
 
-        <section class="description-body">
-            <p>DESCRIPTION:</p>
-            <p>I am a Biomedical Engineer and Developer bridging the gap between human physiology and efficient code. I specialize in deep learning for healthcare innovation—transforming complex signals into actionable insights via the CLI.</p>
-        </section>
+            <div id="content-area">
+                <div id="view-home" class="view active">
+                    <section class="description-body">
+                        <p>DESCRIPTION:</p>
+                        <p>I am a developer who loves building things in the terminal. Focused on minimal design, efficient code, and exploring the web.Biomed engineer and data enthusiast. Big fan of CLI tools, open-source software, and building out my own home lab. When I'm not running clustering algorithms on a VSC cluster, I'm usually writing Python or Bash, learning Java, or messing with DNS and VPN configs.</p>
+                    </section>
+                    <nav class="options">
+                        <p>root@portfolio:~$ Select an option:</p>
+                        <ul>
+                            <li><a href="#" onclick="navigate('creations')">[1] ./creations</a></li>
+                            <li><a href="#" onclick="navigate('thoughts')">[2] ./thoughts</a></li>
+                            <li><a href="#" onclick="navigate('contact')">[3] ./contact_links</a></li>
+                        </ul>
+                    </nav>
+                </div>
 
-        <nav class="options">
-            <p>root@portfolio:~$ Select an option:</p>
-            <ul>
-                <li><a href="#creations">[1] ./creations</a></li>
-                <li><a href="#thoughts">[2] ./thoughts</a></li>
-                <li><a href="#contact">[3] ./contact_links</a></li>
-            </ul>
-        </nav>
-    </main>
+                <div id="view-creations" class="view hidden">
+                    <p>root@portfolio/creations:~$ cat portfolio.log</p>
+                    <ul class="dir-list">
+                        <li><span class="highlight">Physio-Pathologic Predictor:</span>> A machine learning pipeline using logistic regression, XGBoost, and LightGBM to predict patient states, including a specific audit for demographic bias.</li>
+                        <li><span class="highlight">Neural Architectures:</span>> Deployment of PyTorch for a Netflix recommender system and CNN image classifiers for MNIST & Fashion-MNIST.</li>
+                        <li><span class="highlight">Biomed-ETL Suite:</span>> Custom cross-language scripts (Python, MATLAB, R) designed for automated data extraction and processing.</li>
+                    </ul>
+                </div>
 
-    <aside class="right-pane">
-        <div class="image-wrapper">
-            <pre class="ascii-image">
+                <div id="view-thoughts" class="view hidden">
+                    <p>root@portfolio/thoughts:~$ ls -la</p>
+                    <ul class="dir-list">
+                        <li><span class="highlight">Bias in Clinical AI:</span>> Reflections on my thesis findings regarding demographic fairness in predictive medical models.</li>
+                        <li><span class="highlight">The CLI Advantage:</span>> Why I choose terminal environments for biomedical data wrangling and signal analysis.</li>
+                    </ul>
+                </div>
+
+                <div id="view-contact" class="view hidden">
+                    <p>root@portfolio/contact_links:~$ ping -c 4 owner</p>
+                    <ul class="dir-list">
+                        <li><span class="highlight">Email:</span>> piezangrando@gmail.com</li>
+                        <li><span class="highlight">Location:</span>> Milan, Italy / Leuven, Belgium</li>
+                        <li><span class="highlight">GitHub:</span>> <a href="#">github.com/pzangra</a></li>
+                        <li><span class="highlight">LinkedIn:</span>> <a href="#">linkedin.com/in/pietro-maria-zangrando-b945bb355</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="#" id="back-btn" class="back-btn hidden" onclick="navigate('home')">cd .. [Return]</a>
+        </main>
+
+        <aside class="right-pane">
+            <div class="image-wrapper">
+                <pre class="ascii-image">
 ##%%%%%%#%#%%##+....#*=@@%%*@@@@@####%##%%@=#*=. @:  @  =: .*- @%%#%#
 @@@@@@@@@@@@@@@@@@@@@%+=-%@@@@@@@@@@*#@#@=@#@@==@+@@- #@ .%@@@:%@%@@@
  .*@@@@@@@@@@@@@@@*@@@@@@#*@ -#* @@@@@@@@#@*@@-..%:=@* @%@@@#:* @%@%%
@@ -87,15 +121,41 @@
   ..::.*%%##%%**#@#%@@@  @@@  @ ..       @@@@@@=. *@ : @@  @@@@= @@@-
 .#%@@@*%*%%@@@@@@@@*--@@  @   %% ..::. *@@@@@@ #.@@@%@@@ .@@@@. @@#%*
 .%+. . #=:-=:.:- .*#-+-@      @@*     @@@+*@. :@-# = @+  =*-.  @%=-%:
-		<pre>
-        </div>
+                </pre>
+            </div>
 
-        <div class="system-status">
-            <p>> POLIMI BIOMED: Done</p>
-            <p>> KUL BIOMED: Ongoing</p>
-            <p>> STATUS: Online && Locked-In</p>
-        </div>
-    </aside>	
-</div>
+            <div class="system-status">
+                <p>> POLIMI BIOMED: Graduated July 2025</p>
+                <p>> KUL BIOMED: Enrolled</p>
+                <p>> STATUS: Online && Locked-In</p>
+            </div>
+        </aside>
+    
+    </div>
 
+    <script>
+        function navigate(section) {
+            // 1. Hide all views
+            document.querySelectorAll('.view').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('active');
+            });
+
+            // 2. Show the target view
+            const target = document.getElementById(`view-${section}`);
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('active');
+            }
+
+            // 3. Toggle the Back Button
+            const backBtn = document.getElementById('back-btn');
+            if (section === 'home') {
+                backBtn.classList.add('hidden');
+            } else {
+                backBtn.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
 </html>

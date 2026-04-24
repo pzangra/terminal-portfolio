@@ -1,10 +1,7 @@
 :root {
     --bg-color: #050505;
-    --text-color: #00ff00; 
+    --text-color: #00ff00;
     --font-stack: "Courier New", Courier, monospace;
-    /* Define terminal dimensions */
-    --cols: 120ch; 
-    --rows: 40em; 
 }
 
 * {
@@ -17,94 +14,40 @@ body {
     background-color: #000; /* Darker padding around the "monitor" */
     color: var(--text-color);
     font-family: var(--font-stack);
-    height: 100vh;
-    display: flex;
-    justify-content: center; /* Center the terminal on web */
-    align-items: center;
-    overflow: hidden;
-}
-
-.container {
-    display: flex;
-    width: var(--cols);
-    height: var(--rows);
-    background-color: var(--bg-color);
-    border: 1px solid #222;
-    position: relative;
-    z-index: 2;
-    padding: 1.5rem; /* Slight internal padding like a bezel */
-}
-
-.left-pane {
-    width: 66%; /* Fixed 2/3 */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-right: 2ch;
-    border-right: 1px dashed var(--text-color);
-}
-
-.right-pane {
-    width: 34%; /* Fixed 1/3 */
-    display: flex;
-    flex-direction: column;
-    padding-left: 2ch;
-    overflow: hidden; /* Important for ASCII safety */
-}
-
-pre {
-    font-family: var(--font-stack);
-    /* Strict spacing for ASCII */
-    white-space: pre; 
-    font-size: 0.75rem; /* Adjust so 120ch fits your screen */
-    line-height: 1.1;
-    letter-spacing: 0;
-}
-
-.ascii-image {
-    margin: 1rem 0;
-    font-size: 0.4rem; /* ASCII images usually need smaller font to fit */
-    line-height: 1;
-}
-
-.description {
-    font-size: 0.85rem;
-    border-top: 1px solid var(--text-color);
-    padding-top: 1rem;
-    line-height: 1.4;
-}:root {
-    --bg-color: #050505;
-    --text-color: #00ff00;
-    --font-stack: "Courier New", Courier, monospace;
-}
-
-body {
-    background-color: #000;
-    color: var(--text-color);
-    font-family: var(--font-stack);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     overflow: hidden;
+}
+
+/* Optional: CRT Scanline effect */
+.scanlines {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    z-index: 10;
+    pointer-events: none;
 }
 
 .container {
     display: flex;
-    width: 130ch; /* Increased width to fit the full ASCII name */
-    height: 50em;
+    width: 130ch;
+    height: 37.5em;
+    background-color: var(--bg-color);
     border: 1px solid #1a1a1a;
     padding: 2ch;
-    background: var(--bg-color);
+    position: relative;
+    z-index: 2;
 }
 
 .left-pane {
     flex: 2;
     display: flex;
     flex-direction: column;
-    border-right: 1px dashed #222;
     padding-right: 3ch;
+    border-right: 1px dashed #222;
 }
 
 .right-pane {
@@ -112,11 +55,12 @@ body {
     display: flex;
     flex-direction: column;
     padding-left: 3ch;
+    overflow: hidden;
 }
 
-/* ASCII Name - Fixed formatting */
+/* ASCII Name */
 .ascii-name {
-    white-space: pre; /* Prevents wrapping */
+    white-space: pre;
     font-size: 0.85rem;
     line-height: 1.1;
     margin-bottom: 2em;
@@ -136,32 +80,6 @@ body {
 }
 
 .options ul {
-    list-style: none;
-    margin-top: 1em;
-}
-
-/* Right Side Styling */
-.image-wrapper {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-}
-
-.ascii-image {
-    font-size: 0.45rem; /* Small font for high-density ASCII */
-    line-height: 1;
-}
-
-.system-status {
-    border: 1px solid var(--text-color);
-    padding: 1ch;
-    font-size: 0.9rem;
-    background: rgba(0, 255, 0, 0.05);
-}
-
-
-/* Options Formatting */
-.options ul {
     list-style-type: none;
     margin-top: 1rem;
 }
@@ -180,12 +98,74 @@ body {
     color: var(--bg-color);
 }
 
-/* Optional: CRT Scanline effect */
-.scanlines {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    background-size: 100% 2px, 3px 100%;
-    z-index: 10;
-    pointer-events: none;
+/* Right Side Styling */
+.image-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.ascii-image {
+    font-size: 0.45rem;
+    line-height: 1;
+}
+
+.system-status {
+    border: 1px solid var(--text-color);
+    padding: 1ch;
+    font-size: 0.9rem;
+    background: rgba(0, 255, 0, 0.05);
+}
+
+/* --- DYNAMIC VIEW STYLING --- */
+#content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Terminal List Formatting */
+.dir-list {
+    list-style-type: none;
+    margin-top: 1rem;
+    padding-left: 0;
+}
+
+.dir-list li {
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    font-size: 0.9rem;
+}
+
+.dir-list .highlight {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+/* Back Button */
+.back-btn {
+    margin-top: auto;
+    align-self: flex-end;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    border: 1px solid var(--text-color);
 }
