@@ -10,3 +10,7 @@ A character-locked personal viewport for Pietro Maria Zangrando.
 
 ## Objective
 Bridging Biomedical Engineering research with terminal-centric developer workflows.
+
+## Acces
+Accessible via github pages at the following link:
+https://pzangra.github.io/terminal-portfolio/#
