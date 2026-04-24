@@ -6,37 +6,43 @@
     <title>Terminal Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="scanlines"></div>
-    <div class="container">
-        
-        <main class="left-pane">
-            <div class="terminal-content">
-                <p>root@portfolio:~$ ./start.sh</p>
-                <p>Initializing system...</p>
-                <p>Welcome to my personal terminal.</p>
-            </div>
-            
-            <div class="options">
-                <p>root@portfolio:~$ Select an option:</p>
-                <ul>
-                    <li><a href="#creations">[1] ./creations</a></li>
-                    <li><a href="#thoughts">[2] ./thoughts</a></li>
-                    <li><a href="#contact">[3] ./contact_links</a></li>
-                </ul>
-            </div>
-        </main>
 
-        <aside class="right-pane">
+<div class="scanlines"></div>
+<div class="container">
+    <main class="left-pane">
+        <header class="header-section">
             <pre class="ascii-name">
-  _   _    _    __  __ _____ 
- | \ | |  / \  |  \/  | ____|
- |  \| | / _ \ | |\/| |  _|  
- | |\  |/ ___ \| |  | | |___ 
- |_| \_/_/   \_\_|  |_|_____|
+  /$$$$$$  /$$$$$$$$ /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ 
+ /$$__  $$|____ /$$/|____  $$| $$__  $$ /$$__  $$ /$$__  $$|____  $$
+| $$  \ $$   /$$$$/  /$$$$$$$| $$  \ $$| $$  \ $$| $$  \__/ /$$$$$$$
+| $$  | $$  /$$__/  /$$__  $$| $$  | $$| $$  | $$| $$      /$$__  $$
+| $$$$$$$/ /$$$$$$$$|  $$$$$$$| $$  | $$|  $$$$$$$| $$     |  $$$$$$$
+| $$____/ |________/ \_______/|__/  |__/ \____  $$|__/      \_______/
+| $$                                     /$$  \ $$                   
+| $$                                    |  $$$$$$/                   
+|__/                                     \______/                    
             </pre>
+        </header>
 
+        <section class="description-body">
+            <p>DESCRIPTION:</p>
+            <p>I am a developer who loves building things in the terminal. Focused on minimal design, efficient code, and exploring the web.</p>
+        </section>
+
+        <nav class="options">
+            <p>root@portfolio:~$ Select an option:</p>
+            <ul>
+                <li><a href="#creations">[1] ./creations</a></li>
+                <li><a href="#thoughts">[2] ./thoughts</a></li>
+                <li><a href="#contact">[3] ./contact_links</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <aside class="right-pane">
+        <div class="image-wrapper">
             <pre class="ascii-image">
+		<pre>
 ##%%%%%%#%#%%##+....#*=@@%%*@@@@@####%##%%@=#*=. @:  @  =: .*- @%%#%#
 @@@@@@@@@@@@@@@@@@@@@%+=-%@@@@@@@@@@*#@#@=@#@@==@+@@- #@ .%@@@:%@%@@@
  .*@@@@@@@@@@@@@@@*@@@@@@#*@ -#* @@@@@@@@#@*@@-..%:=@* @%@@@#:* @%@%%
@@ -82,18 +88,15 @@
   ..::.*%%##%%**#@#%@@@  @@@  @ ..       @@@@@@=. *@ : @@  @@@@= @@@-
 .#%@@@*%*%%@@@@@@@@*--@@  @   %% ..::. *@@@@@@ #.@@@%@@@ .@@@@. @@#%*
 .%+. . #=:-=:.:- .*#-+-@      @@*     @@@+*@. :@-# = @+  =*-.  @%=-%:
+		<pre>
+        </div>
 
-            </pre>
+        <div class="system-status">
+            <p>> POLIMI BIOMED: Done</p>
+            <p>> KUL BIOMED: Ongoing</p>
+            <p>> STATUS: Online && Locked-In</p>
+        </div>
+    </aside>	
+</div>
 
-            <div class="description">
-                <p>> RENDERER: TermOS v2.4</p>
-                <p>> STATUS: Online</p>
-                <br>
-                <p>DESCRIPTION:</p>
-                <p>I am a developer who loves building things in the terminal. Focused on minimal design, efficient code, and exploring the web.</p>
-            </div>
-        </aside>
-
-    </div>
-</body>
 </html>
