@@ -33,7 +33,8 @@ body {
 
 .container {
     display: flex;
-    width: 130ch;
+    /* Kept at 130ch to protect ASCII art, height reduced by 25% */
+    width: 130ch; 
     height: 37.5em;
     background-color: var(--bg-color);
     border: 1px solid #1a1a1a;
@@ -122,6 +123,36 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    
+    /* Enable terminal scrolling */
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    /* Keep text from touching the scrollbar and buttons */
+    padding-right: 2ch; 
+    margin-bottom: 1rem;
+    
+    /* Firefox fallback scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--text-color) #0a0a0a;
+}
+
+/* --- TERMINAL SCROLLBAR (Webkit - Chrome/Edge/Safari) --- */
+#content-area::-webkit-scrollbar {
+    width: 1ch; /* Blocky, character-width scrollbar */
+}
+
+#content-area::-webkit-scrollbar-track {
+    background: #0a0a0a; /* Slightly lighter than the absolute black background */
+    border-left: 1px solid #222; /* Subtle track line */
+}
+
+#content-area::-webkit-scrollbar-thumb {
+    background: var(--text-color); /* Solid phosphor green block */
+}
+
+#content-area::-webkit-scrollbar-thumb:hover {
+    background: #fff; /* Flash white when hovered */
 }
 
 .hidden {
